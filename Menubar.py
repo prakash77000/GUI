@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+    #create the main window
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(526, 689)
@@ -9,7 +10,8 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(170, 100, 161, 81))
-
+        
+        #set font size
         font = QtGui.QFont()
         font.setPointSize(28)
         self.label.setFont(font)
@@ -19,6 +21,8 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 526, 21))
         self.menubar.setObjectName("menubar")
+        
+        #create the menu options
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
         self.menuEdit = QtWidgets.QMenu(self.menubar)
@@ -65,11 +69,13 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        #Changes the label text when a menu button is clicked
         self.actionNew.triggered.connect(lambda: self.clickd('New was clickd'))
         self.actionSave.triggered.connect(lambda: self.clickd('Save was clickd'))
         self.actionCopy.triggered.connect(lambda: self.clickd('Copy was clickd'))
         self.actionPaste.triggered.connect(lambda: self.clickd('Paste was clickd'))
 
+        #editing the mane and shortcut of the menu buttons
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -101,6 +107,7 @@ class Ui_MainWindow(object):
         self.actionRefactor.setText(_translate("MainWindow", "Refactor"))
         self.actionRefactor.setShortcut(_translate("MainWindow", "Ctrl+Shift+R"))
 
+    #Changes the label when a menu button is clicked
     def clickd(self, text):
         self.label.setText(text)
         self.label.adjustSize()
